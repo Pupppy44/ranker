@@ -61,7 +61,7 @@ const command = args.shift().toLowerCase();
   if(command === "help") {
     const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Administrator" permission in order to view commands.') 
     const perms = message.channel.permissionsFor(message.author);
-    if(message.channel.type == "dm") return message.author.send("Please run commands in a guild.");
+    if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
     if(!perms.has("ADMINISTRATOR")) return message.channel.send(pwarn)
     const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
     message.author.send(helpembed)
