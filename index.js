@@ -32,7 +32,7 @@ const command = args.shift().toLowerCase();
     var RoleId = Number(args[1])
     var UserId = await rbx.getIdFromUsername(Username)
     rbx.setRank(groupId, UserId, RoleId)
-    await new Promise(resolve => setTimeout(resolve, 100));
+    await new Promise(resolve => setTimeout(resolve, 150));
     var RoleName = await rbx.getRankNameInGroup(groupId, UserId)
     const rankembed = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`Ranked **${Username}** to **${RoleName}**`) .setFooter("If the user's rank didn't change, please DM Kirb.#7321");
     message.channel.send(rankembed)
