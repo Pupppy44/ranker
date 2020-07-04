@@ -63,6 +63,9 @@ const command = args.shift().toLowerCase();
     const perms = message.channel.permissionsFor(message.author);
     if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
     if(!perms.has("ADMINISTRATOR")) return message.channel.send(pwarn)
+    const role = message.guild.roles.find(role => role.name === "Moderators");
+    if(!message.member.roles.has(role.id)) {
+    message.channel.send("uh")
     const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
     message.author.send(helpembed)
   }  
