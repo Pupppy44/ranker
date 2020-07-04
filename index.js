@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require("discord.js");
 const client = new Client();
-const prefix = "$";
+const prefix = "k!";
 const express = require("express");
 const rbx = require("noblox.js");
 const app = express();
