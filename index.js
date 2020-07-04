@@ -21,6 +21,13 @@ const command = args.shift().toLowerCase();
     message.delete()
   }
   
+    if(command === "verify") {
+    const rolea = message.guild.roles.find(r => r.name === "Member");
+    if(message.member.roles.has(rolea.id)) return;
+    let role = message.guild.roles.find(r => r.name === "Member");
+      message.member.addRole(role).catch(console.error);
+  }
+  
   if(command === "rank") {
     const channel = message.channel
     const perms = channel.permissionsFor(message.author);
