@@ -58,16 +58,7 @@ const command = args.shift().toLowerCase();
     message.channel.send(shoutembed)
   }
   
-  if(command === "help") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
-    const perms = message.channel.permissionsFor(message.author);
-    if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
-    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
-    const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
-    message.author.send(helpembed)
-  }
-  
-    if (command === "exile") {
+   if (command === "exile") {
     const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to exile group members.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
     const channel = message.channel
@@ -83,11 +74,20 @@ const command = args.shift().toLowerCase();
     run();
     var Username = args[0]
     var UserId = await rbx.getIdFromUsername(Username)
-    rbx.exile(groupId, UserId)
-    const suc = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`User ${Username} has been exiled.`)
+    rbx.exile(groupId, UserId).catch(message.channel.send("An error occured."));
+    const suc = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`User **${Username}** has been exiled.`)
     message.channel.send(suc)
   }
   
+  
+  if(command === "help") {
+    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
+    const perms = message.channel.permissionsFor(message.author);
+    if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
+    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
+    const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription(`**${prefix + "help"}** - View all commands\n**${prefix + "rank"}** - Rank a group member. Usage: **${prefix + "rank"} <username> <roleid>**\n**${prefix + "shout"}** - Sends a group shout from a bot. Usage: **$shout <message>**\n**${prefix + "exile"}** - Exiles a group member. Usage: **${prefix + "exile"} <username>**`)
+    message.author.send(helpembed)
+  }
   
 });
 
