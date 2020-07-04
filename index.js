@@ -92,6 +92,9 @@ const command = args.shift().toLowerCase();
     message.channel.send(noti)
   }
   
+  if(command === "lickcheese1000") {
+    message.channel.send("The start of **Kirby Studios** is here! Autorank applications coming soon...")
+  }
 });
 
 client.login(process.env.Token);
