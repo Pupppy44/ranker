@@ -69,6 +69,7 @@ const command = args.shift().toLowerCase();
     const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
     message.author.send(helpembed)
   }  
+  }
 });
 
 client.login(process.env.Token);
