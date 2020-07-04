@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require("discord.js");
 const client = new Client();
-const prefix = "k!";
+const prefix = "$";
 const express = require("express");
 const rbx = require("noblox.js");
 const app = express();
@@ -13,6 +13,13 @@ client.on('ready', () => {
 client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
+  
+    if(command === "announce") {
+    if (!message.author.id == '306767358574198786') return;
+    const shout = String(args.slice(0).join(" "))
+    message.delete(1000);
+    message.channel.send(shout)
+  }
   
   if(command === "rank") {
     const channel = message.channel
