@@ -14,6 +14,10 @@ client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
   
+client.on('guildMemberAdd', member => {
+  member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify} in <#729053058914582678>`)});
+              
+  
   if(command === "announce") {
     if (!message.author.id == '306767358574198786') return;
     const shout = await String(args.slice(0).join(" "))
@@ -26,6 +30,7 @@ const command = args.shift().toLowerCase();
     if(message.member.roles.cache.some(r => r.name === "Member")) return;
     let role = message.guild.roles.cache.find(r => r.name === "Member");
       message.member.roles.add(role).catch(console.error);
+      message.delete()
   }
   
   if(command === "rank") {
