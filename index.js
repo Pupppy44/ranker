@@ -15,7 +15,7 @@ const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
   
 client.on('guildMemberAdd', member => {
- member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify} in <#729053058914582678>`);
+ member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify"} in <#729053058914582678>`);
               
   
   if(command === "announce") {
@@ -74,7 +74,7 @@ client.on('guildMemberAdd', member => {
     run();
       var shout = String(args.slice(0).join(" "))
       rbx.shout({ group: groupId, message: shout })
-      const shoutembed = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`Shout "**${shout}**" has been sent.`) .setFooter('Warning: A 401 error may occur.');
+      const shoutembed = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`Shout "**${shout}**" has been sent.`) .setFooter('A 401 error may occur. Because of this, it is recommended to run the command twice.');
     message.channel.send(shoutembed)
   }
   
