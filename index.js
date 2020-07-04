@@ -7,6 +7,7 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setPresence({ game: { name: 'nameGoesHere', type: 0 } });
 });
 
 client.on("message", async message => {
