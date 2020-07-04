@@ -41,8 +41,9 @@ const command = args.shift().toLowerCase();
     if(!args[0]) return message.channel.send("Please enter a suggestion.")
     const channels = message.member.guild.channels.cache.find(ch => ch.name === 'bots');
     const shout = await String(args.slice(0).join(" "))
-    const embed = await new MessageEmbed() .setTitle('Suggestion') .setColor(0x0000FF) .setAuthor(message.member.user.tag, message.member.user.displayAvatarURL) .setDescription(shout)
+    const embed = await new MessageEmbed() .setTitle('Suggestion') .setColor(0x0000FF) .setAuthor(message.member.user.tag) .setThumbnail(message.member.user.avatarURL) .setDescription(shout)
     channels.send(embed)
+    
   }
   
   if(command === "rank") {
