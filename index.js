@@ -7,13 +7,7 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setStatus('online')
-    client.user.setPresence({
-        game: {
-            name: 'Use k!help',
-            type: "Playing",
-            url: "https://discordapp.com/"
-        }
+  client.user.setPresence({ activity: { name: 'k!help | Powered by Kirby Studios' }, status: 'online' })
 });
 
 client.on("message", async message => {
