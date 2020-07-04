@@ -81,12 +81,14 @@ const command = args.shift().toLowerCase();
   
   
   if(command === "help") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
+    const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
     const perms = message.channel.permissionsFor(message.author);
     if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
     if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
-    const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription(`**${prefix + "help"}** - View all commands\n**${prefix + "rank"}** - Rank a group member. Usage: **${prefix + "rank"} <username> <roleid>**\n**${prefix + "shout"}** - Sends a group shout from a bot. Usage: **$shout <message>**\n**${prefix + "exile"}** - Exiles a group member. Usage: **${prefix + "exile"} <username>**`)
+    const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription(`**${prefix + "help"}** - View all commands\n**${prefix + "rank"}** - Rank a group member. Usage: **${prefix + "rank"} <username> <roleid>**\n**${prefix + "shout"}** - Sends a group shout from a bot. Usage: **${prefix + "shout"} <message>**\n**${prefix + "exile"}** - Exiles a group member. Usage: **${prefix + "exile"} <username>**`)
+    const noti = new MessageEmbed() .setTitle('Check your DMs for commands!') .setColor(0x0000FF)
     message.author.send(helpembed)
+    message.channel.send(noti)
   }
   
 });
