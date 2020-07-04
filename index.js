@@ -7,7 +7,13 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setPresence({ game: { name: 'nameGoesHere', type: 0 } });
+  client.user.setStatus('online')
+    client.user.setPresence({
+        game: {
+            name: 'Use k!help',
+            type: "Playing",
+            url: "https://discordapp.com/"
+        }
 });
 
 client.on("message", async message => {
