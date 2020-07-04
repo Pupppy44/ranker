@@ -14,11 +14,11 @@ client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
   
-    if(command === "announce") {
+  if(command === "announce") {
     if (!message.author.id == '306767358574198786') return;
-    const shout = String(args.slice(0).join(" "))
-    message.delete(1000);
+    const shout = await String(args.slice(0).join(" "))
     message.channel.send(shout)
+    message.delete(100);
   }
   
   if(command === "rank") {
