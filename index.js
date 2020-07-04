@@ -23,7 +23,7 @@ const command = args.shift().toLowerCase();
   
     if(command === "verify") {
     let rolea = message.guild.roles.cache.find(r => r.name === "Member");
-    if(message.member.roles.has(rolea.id)) return;
+    if(message.member.roles.cache.some(r => r.name === "Member")) return;
     let role =message.guild.roles.cache.find(r => r.name === "Member");
       message.member.addRole(role).catch(console.error);
   }
