@@ -7,7 +7,7 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setPresence({ activity: { name: 'k!help | Powered by Kirby Studios' }, status: 'online' })
+  client.user.setPresence({ activity: { name: `${prefix + "help"} | Powered by Kirby Studios` }, status: 'online' })
 });
 
 client.on("message", async message => {
@@ -24,8 +24,8 @@ const command = args.shift().toLowerCase();
     if(command === "verify") {
     let rolea = message.guild.roles.cache.find(r => r.name === "Member");
     if(message.member.roles.cache.some(r => r.name === "Member")) return;
-    let role =message.guild.roles.cache.find(r => r.name === "Member");
-      message.member.addRole(role).catch(console.error);
+    let role = message.guild.roles.cache.find(r => r.name === "Member");
+      message.member.roles.add(role).catch(console.error);
   }
   
   if(command === "rank") {
