@@ -12,6 +12,7 @@ client.on('ready', () => {
 
 
 client.on('guildMemberAdd', member => {
+ await new Promise(resolve => setTimeout(resolve, 1000));
  member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify"} in <#729053058914582678>`);
  });
   
@@ -113,10 +114,7 @@ const command = args.shift().toLowerCase();
     message.author.send(helpembed)
     message.channel.send(noti)
   }
-  
-  if(command === "lickcheese1000") {
-    message.channel.send("The start of **Kirby Studios** is here! Autorank applications coming soon...")
-  }
+
 });
 
 client.login(process.env.Token);
