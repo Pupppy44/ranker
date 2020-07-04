@@ -66,6 +66,29 @@ const command = args.shift().toLowerCase();
     const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
     message.author.send(helpembed)
   }
+  
+    if (command === "exile") {
+    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to exile group members.') 
+    const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
+    const channel = message.channel
+    const perms = channel.permissionsFor(message.author);
+    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
+    if(!args[0]) return message.channel.send(noconwarn); 
+      
+    var groupId = 334423
+    var cookie = process.env.cookie
+    async function run() {
+    await rbx.setCookie(process.env.cookie); } 
+    
+    run();
+    var Username = args[0]
+    var UserId = await rbx.getIdFromUsername(Username)
+    rbx.exile(groupId, UserId)
+    const suc = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`User ${Username} has been exiled.`)
+    message.channel.send(suc)
+  }
+  
+  
 });
 
 client.login(process.env.Token);
