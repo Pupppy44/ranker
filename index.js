@@ -18,8 +18,8 @@ const command = args.shift().toLowerCase();
     const perms = channel.permissionsFor(message.author);
     const rwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a RoleId.')
     const userwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Administrator" permission in order to rank group members.')
-    if(!perms.has("ADMINISTRATOR")) return message.channel.send(pwarn)
+    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to rank group members.')
+    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
     if(!args[0]) return message.channel.send(userwarn);
     if(!args[1]) return message.channel.send(rwarn);
     var groupId = 334423
@@ -39,11 +39,11 @@ const command = args.shift().toLowerCase();
   }
   
     if(command === "shout") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Administrator" permission in order to shout.') 
+    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to shout.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a shout message.')
     const channel = message.channel
     const perms = channel.permissionsFor(message.author);
-    if(!perms.has("ADMINISTRATOR")) return message.channel.send(pwarn)
+    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
     if(!args[0]) return message.channel.send(noconwarn); 
       
     var groupId = 334423
@@ -59,16 +59,12 @@ const command = args.shift().toLowerCase();
   }
   
   if(command === "help") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Administrator" permission in order to view commands.') 
+    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
     const perms = message.channel.permissionsFor(message.author);
     if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
-    if(!perms.has("ADMINISTRATOR")) return message.channel.send(pwarn)
-    const role = message.guild.roles.find(role => role.name === "Moderators");
-    if(!message.member.roles.has(role.id)) {
-    message.channel.send("uh")
+    if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
     const helpembed = new MessageEmbed() .setTitle('Help') .setColor(0x00FF00) .setDescription('**$help** - View all commands\n**$rank** - Rank a group member. Usage: **$rank <username> <roleid>**\n**$shout** - Sends a group shout from a bot. Usage: **$shout <message>**')
     message.author.send(helpembed)
-  }  
   }
 });
 
