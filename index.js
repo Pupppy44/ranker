@@ -10,12 +10,14 @@ client.on('ready', () => {
   client.user.setPresence({ activity: { name: `${prefix + "help"} | Powered by Kirby Studios` }, status: 'online' })
 });
 
+
+client.on('guildMemberAdd', member => {
+ member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify"} in <#729053058914582678>`);
+  
+  
 client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
-  
-client.on('guildMemberAdd', member => {
- member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify"} in <#729053058914582678>`);
               
   
   if(command === "announce") {
