@@ -18,7 +18,7 @@ const command = args.shift().toLowerCase();
     if (!message.author.id == '306767358574198786') return;
     const shout = await String(args.slice(0).join(" "))
     message.channel.send(shout)
-    message.delete(100);
+    message.delete()
   }
   
   if(command === "rank") {
