@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require("discord.js");
 const client = new Client();
-const prefix = "-";
+const prefix = "$";
 const express = require("express");
 const rbx = require("noblox.js");
 const app = express();
@@ -74,7 +74,7 @@ const command = args.shift().toLowerCase();
     run();
     var Username = args[0]
     var UserId = await rbx.getIdFromUsername(Username)
-    rbx.exile(groupId, UserId).catch(message.channel.send("An error occured."));
+    rbx.exile(groupId, UserId)
     const suc = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`User **${Username}** has been exiled.`)
     message.channel.send(suc)
   }
