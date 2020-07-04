@@ -11,7 +11,7 @@ client.on('ready', () => {
 });
 
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', async member => {
  await new Promise(resolve => setTimeout(resolve, 1000));
  member.send(`Welcome to **Kirby Studios**! To verify, say ${prefix + "verify"} in <#729053058914582678>`);
  });
