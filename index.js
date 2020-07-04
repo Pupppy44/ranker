@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require("discord.js");
 const client = new Client();
-const prefix = "$";
+const prefix = "-";
 const express = require("express");
 const rbx = require("noblox.js");
 const app = express();
@@ -18,7 +18,7 @@ const command = args.shift().toLowerCase();
     const perms = channel.permissionsFor(message.author);
     const rwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a RoleId.')
     const userwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to rank group members.')
+    const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to rank group members.')
     if(!perms.has("MANAGE_GUILD")) return message.channel.send(pwarn)
     if(!args[0]) return message.channel.send(userwarn);
     if(!args[1]) return message.channel.send(rwarn);
@@ -39,7 +39,7 @@ const command = args.shift().toLowerCase();
   }
   
     if(command === "shout") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to shout.') 
+    const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to shout.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a shout message.')
     const channel = message.channel
     const perms = channel.permissionsFor(message.author);
@@ -59,7 +59,7 @@ const command = args.shift().toLowerCase();
   }
   
    if (command === "exile") {
-    const pwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('You must have the "Manage Server" permission in order to exile group members.') 
+    const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to exile group members.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
     const channel = message.channel
     const perms = channel.permissionsFor(message.author);
