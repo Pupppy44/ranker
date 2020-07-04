@@ -53,7 +53,7 @@ const command = args.shift().toLowerCase();
     
     run();
       var shout = String(args.slice(0).join(" "))
-      rbx.shout({ group: groupId, message: shout }).catch(message.channel.send("Oh no"));
+      rbx.shout({ group: groupId, message: shout })
       const shoutembed = new MessageEmbed() .setTitle('Success') .setColor(0x00FF00) .setDescription(`Shout "**${shout}**" has been sent.`) .setFooter('Warning: A 401 error may occur.');
     message.channel.send(shoutembed)
   }
