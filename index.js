@@ -22,9 +22,9 @@ const command = args.shift().toLowerCase();
   }
   
     if(command === "verify") {
-    const rolea = message.guild.roles.find(r => r.name === "Member");
+    let rolea = message.guild.roles.cache.find(r => r.name === "Member");
     if(message.member.roles.has(rolea.id)) return;
-    let role = message.guild.roles.find(r => r.name === "Member");
+    let role =message.guild.roles.cache.find(r => r.name === "Member");
       message.member.addRole(role).catch(console.error);
   }
   
