@@ -7,7 +7,7 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`); //  `${prefix + "help"} | Powered by Kirby Studios`
-  client.user.setPresence({ activity: { name: "Undergoing Maintenance" }, status: 'online' })
+  client.user.setPresence({ activity: { name: "Bot temporarily down for changes :eyes:" }, status: 'dnd' })
 });
 
 
