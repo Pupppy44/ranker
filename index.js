@@ -6,8 +6,8 @@ const rbx = require("noblox.js");
 const app = express();
 
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setPresence({ activity: { name: `${prefix + "help"} | Powered by Kirby Studios` }, status: 'online' })
+  console.log(`Logged in as ${client.user.tag}!`); //  `${prefix + "help"} | Powered by Kirby Studios`
+  client.user.setPresence({ activity: { name: "Undergoing Maintenance" }, status: 'online' })
 });
 
 
