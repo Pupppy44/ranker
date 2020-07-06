@@ -19,17 +19,7 @@ client.on('guildMemberAdd', async member => {
   
 client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
-const command = args.shift().toLowerCase();
-
-  if(command === "check") {
-  message.channel.send("Check what bro?")
-  const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 10000 });
-        console.log(collector)
-        collector.on('collect', message => {
-  if(message.content == "You") {
-    message.channel.send("Oh... :flushed:")
-  }
-})          
+const command = args.shift().toLowerCase();         
   
   if(command === "announce") {
     if (!message.author.id == '306767358574198786') return;
