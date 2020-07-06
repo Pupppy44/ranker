@@ -20,7 +20,13 @@ client.on('guildMemberAdd', async member => {
 client.on("message", async message => {
 const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();
-              
+
+if(command === "check") {
+  message.channel.send("Check what bro?")
+  if(message.content == "You") {
+    message.channel.send("Oh... :flushed:")
+  }
+}              
   
   if(command === "announce") {
     if (!message.author.id == '306767358574198786') return;
