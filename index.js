@@ -7,7 +7,7 @@ const app = express();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`); //  `${prefix + "help"} | Powered by Kirby Studios`
-  client.user.setPresence({ activity: { name: "Bot temporarily down for changes :eyes:" }, status: 'dnd' })
+  client.user.setPresence({ activity: { name: `${prefix}help | Powered by Kirby Studios` }, status: 'online' })
 });
 
 
@@ -22,6 +22,7 @@ const args = message.content.slice(prefix.length).split(' ');
 const command = args.shift().toLowerCase();         
   
   if(command === "announce") {
+    if(!message.content.startsWith(`${prefix}announce`)) return;
     if (!message.author.id == '306767358574198786') return;
     const shout = await String(args.slice(0).join(" "))
     message.channel.send(shout)
@@ -37,6 +38,7 @@ const command = args.shift().toLowerCase();
   }
 
   if (command === "suggest") {
+    if(!message.content.startsWith(`${prefix}suggest`)) return;
     if(!args[0]) return message.channel.send("Please enter a suggestion.")
     const channels = message.member.guild.channels.cache.find(ch => ch.name === 'bots');
     const shout = await String(args.slice(0).join(" "))
@@ -46,6 +48,7 @@ const command = args.shift().toLowerCase();
   }
   
   if(command === "rank") {
+    if(!message.content.startsWith(`${prefix}rank`)) return;
     const channel = message.channel
     const perms = channel.permissionsFor(message.author);
     const rwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a RoleId.')
@@ -71,6 +74,7 @@ const command = args.shift().toLowerCase();
   }
   
     if(command === "shout") {
+    if(!message.content.startsWith(`${prefix}shout`)) return;
     const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to shout.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a shout message.')
     const channel = message.channel
@@ -91,6 +95,7 @@ const command = args.shift().toLowerCase();
   }
   
    if (command === "exile") {
+    if(!message.content.startsWith(`${prefix}exile`)) return;
     const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to exile group members.') 
     const noconwarn = new MessageEmbed() .setTitle('Error') .setColor(0xFF0000) .setDescription('Please enter a username.')
     const channel = message.channel
@@ -113,6 +118,7 @@ const command = args.shift().toLowerCase();
   
   
   if(command === "help") {
+    if(!message.content.startsWith(`${prefix}help`)) return;
     const pwarn = new MessageEmbed() .setTitle('Insufficient Permissions') .setColor(0xFFFF00) .setDescription('You must have the "Manage Server" permission in order to view commands.') 
     const perms = message.channel.permissionsFor(message.author);
     if(message.channel.type === "dm") return message.author.send("Please run commands in a guild.");
